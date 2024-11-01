@@ -10,7 +10,7 @@ namespace ProgrammingC
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("");
         }
     }
 }
