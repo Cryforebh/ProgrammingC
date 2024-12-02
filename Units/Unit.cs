@@ -55,7 +55,7 @@ namespace GamePrototype.Units
         {
             if (!Inventory.TryAdd(item)) 
             {
-                Console.WriteLine($"Inventory of {Name} is full");
+                Console.WriteLine($"В инветраре {Name} заполненно.");
             }
         }
 

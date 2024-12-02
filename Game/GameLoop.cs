@@ -1,5 +1,6 @@
 ﻿using GamePrototype.Combat;
 using GamePrototype.Dungeon;
+using GamePrototype.Items;
 using GamePrototype.Units;
 using GamePrototype.Utils;
 
@@ -10,11 +11,11 @@ namespace GamePrototype.Game
         private Unit _player;
         private DungeonRoom _dungeon;
         private readonly CombatManager _combatManager = new CombatManager();
-        
+
         public void StartGame() 
         {
             Initialize();
-            Console.WriteLine("Entering the dungeon");
+            Console.WriteLine($"Настало время {_player.Name}. Ты входишь в подземелье...");
             StartGameLoop();
         }
 
@@ -22,11 +23,10 @@ namespace GamePrototype.Game
 
         private void Initialize()
         {
-            Console.WriteLine("Welcome, player!");
+            Console.WriteLine("Добро пожаловать, игрок!");
             _dungeon = DungeonBuilder.BuildDungeon();
-            Console.WriteLine("Enter your name");
+            Console.Write("Введи свое имя: ");
             _player = UnitFactoryDemo.CreatePlayer(Console.ReadLine());
-            Console.WriteLine($"Hello {_player.Name}");
         }
 
         private void StartGameLoop()
@@ -38,7 +38,7 @@ namespace GamePrototype.Game
                 StartRoomEncounter(currentRoom, out var success);
                 if (!success) 
                 {
-                    Console.WriteLine("Game over!");
+                    Console.WriteLine("Игра окончена!");
                     return;
                 }
                 DisplayRouteOptions(currentRoom);
@@ -51,13 +51,12 @@ namespace GamePrototype.Game
                     }
                     else 
                     {
-                        Console.WriteLine("Wrong direction!");
+                        Console.WriteLine("Неверное направление!");
                     }
                 }
             }
-            Console.WriteLine($"Congratulations, {_player.Name}");
-            Console.WriteLine("Result: ");
-            Console.WriteLine(_player.ToString());
+            Console.WriteLine($"\nТебе удалось дойти до конца, поздравляю!");
+            Console.WriteLine($"Твой результат {_player.ToString()}:") ;
         }
 
         private void StartRoomEncounter(DungeonRoom currentRoom, out bool success)
@@ -88,10 +87,11 @@ namespace GamePrototype.Game
 
         private void DisplayRouteOptions(DungeonRoom currentRoom)
         {
-            Console.WriteLine("Where to go?");
+            DirectionName directionName;
+            Console.WriteLine("Какое направление из возможных выберешь?");
             foreach (var room in currentRoom.Rooms)
             {
-                Console.Write($"{room.Key} - {(int) room.Key}\t");
+                Console.Write($"{directionName.Name(room.Key)} - {(int) room.Key}\t");
             }
         }
 

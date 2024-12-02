@@ -10,4 +10,13 @@ namespace GamePrototype.Items.EquipItems
 
         public override EquipSlot Slot => EquipSlot.Armour;
     }
+
+    public sealed class ArmourHelmet : EquipItem
+    {
+        public ArmourHelmet(uint defence, uint durability, string name) : base(durability, name) => Defence = defence;
+
+        public uint Defence { get; }
+
+        public override EquipSlot Slot => EquipSlot.ArmourHelmet;
+    }
 }

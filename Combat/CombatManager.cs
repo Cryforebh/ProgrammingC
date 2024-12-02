@@ -1,9 +1,12 @@
-﻿using GamePrototype.Units;
+﻿using GamePrototype.Items;
+using GamePrototype.Units;
 
 namespace GamePrototype.Combat
 {
     public sealed class CombatManager
     {
+        RockPaperScissorsName rockPaperScissorsName;
+
         private readonly Random _random = new();
         
         public Unit StartCombat(Unit player, Unit enemy) => PlayCombatRoutine(player, enemy);
@@ -34,14 +37,18 @@ namespace GamePrototype.Combat
             return null;
         }
 
-        private string GetCombatString() => $"Type {RockPaperScissors.Rock} = {(int)RockPaperScissors.Rock}" +
-            $"or {RockPaperScissors.Paper} = {(int)RockPaperScissors.Paper}" +
-            $"or {RockPaperScissors.Scissors} = {(int)RockPaperScissors.Scissors}";
+        private string GetCombatString()
+        {
+            return
+            $"Выбери: {rockPaperScissorsName.Name(RockPaperScissors.Rock)} = {(int)RockPaperScissors.Rock}" +
+            $", или {rockPaperScissorsName.Name(RockPaperScissors.Paper)} = {(int)RockPaperScissors.Paper}" +
+            $", или {rockPaperScissorsName.Name(RockPaperScissors.Scissors)} = {(int)RockPaperScissors.Scissors}";
+        }
 
         private void HandleCombatInput(Unit player, Unit enemy, RockPaperScissors rockPaperScissors)
         {
             var enemyInput = (RockPaperScissors) _random.Next(1, 3);
-            Console.WriteLine($"Result player = {rockPaperScissors} and enemy = {enemyInput}");
+            Console.WriteLine($"Результат игрока = {rockPaperScissorsName.Name(rockPaperScissors)}, а у противника = {rockPaperScissorsName.Name(enemyInput)}");
             switch (rockPaperScissors) 
             {
                 // player hit
@@ -65,7 +72,7 @@ namespace GamePrototype.Combat
                     ApplyDamage(enemy, player);
                     break;
                 default:
-                    Console.WriteLine("Combatants tried to hit, but missed :(");
+                    Console.WriteLine("Бойцы попытались нанести удар, но промахнулись :(");
                     break;
             }
         }
@@ -73,10 +80,10 @@ namespace GamePrototype.Combat
         private void ApplyDamage(Unit attacker, Unit defender)
         {
             defender.ApplyDamage(attacker.GetUnitDamage());
-            Console.WriteLine($"{attacker.Name} hits {defender.Name}. {defender.Name} health {defender.Health}/{defender.MaxHealth}");
+            Console.WriteLine($"{attacker.Name} попадает! {defender.Name} получает урон и его здоровье теперь {defender.Health}/{defender.MaxHealth}");
             if (defender.Health == 0) 
             {
-                Console.WriteLine($"{defender.Name} is dead!");
+                Console.WriteLine($"{defender.Name} мертв!");
             }
         }
     }

@@ -57,7 +57,11 @@ namespace GamePrototype.Units
         {
             if (_equipment.TryGetValue(EquipSlot.Armour, out var item) && item is Armour armour) 
             {
-                damage -= (uint)(damage * (armour.Defence / 100f));
+                if (_equipment.TryGetValue(EquipSlot.ArmourHelmet, out var itemHelmet) && itemHelmet is ArmourHelmet armourHelmet)
+                {
+                    damage -= (uint)(damage * ((armour.Defence + armourHelmet.Defence) / 100f));
+                }
+                    damage -= (uint)(damage * (armour.Defence / 100f));
             }
             return damage;
         }
@@ -66,8 +70,8 @@ namespace GamePrototype.Units
         {
             var builder = new StringBuilder();
             builder.AppendLine(Name);
-            builder.AppendLine($"Health {Health}/{MaxHealth}");
-            builder.AppendLine("Loot:");
+            builder.AppendLine($"Здоровье {Health}/{MaxHealth}");
+            builder.AppendLine("Добыча:");
             var items = Inventory.Items;
             for (int i = 0; i < items.Count; i++) 
             {

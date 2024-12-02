@@ -29,7 +29,7 @@ namespace GamePrototype.Dungeon
         {
             if (Rooms.ContainsKey(direction))
             {
-                Console.WriteLine($"Room {Name} already has room for {direction.ToString()}");
+                Console.WriteLine($"В комнате {Name} уже есть место для {direction.ToString()}");
                 return false;
             }
             Rooms.Add(direction, room);
