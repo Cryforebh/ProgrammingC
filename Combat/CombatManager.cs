@@ -1,14 +1,16 @@
 ﻿using GamePrototype.Items;
+using GamePrototype.Items.EconomicItems;
+using GamePrototype.Items.EquipItems;
 using GamePrototype.Units;
 
 namespace GamePrototype.Combat
 {
     public sealed class CombatManager
     {
-        RockPaperScissorsName rockPaperScissorsName;
+        RockPaperScissorsName rockPaperScissorsName; // Метод для перевода с английского
 
-        private readonly Random _random = new();
-        
+        private readonly Random _random = new(); // Создание рандома
+
         public Unit StartCombat(Unit player, Unit enemy) => PlayCombatRoutine(player, enemy);
 
         private Unit PlayCombatRoutine(Unit player, Unit enemy)
@@ -85,6 +87,14 @@ namespace GamePrototype.Combat
             {
                 Console.WriteLine($"{defender.Name} мертв!");
             }
+        }
+
+        
+
+        private void Repair(EquipItem grindstone, Player player)
+        {
+            grindstone.ReduceDurability( 1 );
+            Console.WriteLine($"{grindstone.Durability}");
         }
     }
 }

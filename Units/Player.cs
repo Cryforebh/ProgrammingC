@@ -51,6 +51,26 @@ namespace GamePrototype.Units
             {
                 Health += healthPotion.HealthRestore;
             }
+
+            if (economicItem is Grindstone grindstone)
+            {
+                if (_equipment.TryGetValue(EquipSlot.Armour, out var itemWeapon) && itemWeapon is Weapon weapon)
+                {
+                    weapon.Repair(7);
+                }
+                if (_equipment.TryGetValue(EquipSlot.Armour, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
+                {
+                    rangeWeapon.Repair(7);
+                }
+                if (_equipment.TryGetValue(EquipSlot.Armour, out var itemArmour) && itemArmour is Armour armour)
+                {
+                    armour.Repair(7);
+                }
+                if (_equipment.TryGetValue(EquipSlot.ArmourHelmet, out var itemHelmet) && itemHelmet is ArmourHelmet armourHelmet)
+                {
+                    itemHelmet.Repair(7);
+                }
+            }
         }
 
         protected override uint CalculateAppliedDamage(uint damage)
@@ -60,8 +80,18 @@ namespace GamePrototype.Units
                 if (_equipment.TryGetValue(EquipSlot.ArmourHelmet, out var itemHelmet) && itemHelmet is ArmourHelmet armourHelmet)
                 {
                     damage -= (uint)(damage * ((armour.Defence + armourHelmet.Defence) / 100f));
+                    armour.ReduceDurability(1); armourHelmet.ReduceDurability(1);
                 }
-                    damage -= (uint)(damage * (armour.Defence / 100f));
+                damage -= (uint)(damage * (armour.Defence / 100f));
+                armour.ReduceDurability(1);
+            }
+            if (_equipment.TryGetValue(EquipSlot.Armour, out var itemWeapon) && itemWeapon is Weapon weapon)
+            {
+                weapon.ReduceDurability(1);
+            }
+            if (_equipment.TryGetValue(EquipSlot.Armour, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
+            {
+                rangeWeapon.ReduceDurability(1);
             }
             return damage;
         }
@@ -72,6 +102,7 @@ namespace GamePrototype.Units
             builder.AppendLine(Name);
             builder.AppendLine($"Здоровье {Health}/{MaxHealth}");
             builder.AppendLine("Добыча:");
+            
             var items = Inventory.Items;
             for (int i = 0; i < items.Count; i++) 
             {

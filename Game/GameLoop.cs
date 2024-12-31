@@ -56,7 +56,7 @@ namespace GamePrototype.Game
                 }
             }
             Console.WriteLine($"\nТебе удалось дойти до конца, поздравляю!");
-            Console.WriteLine($"Твой результат {_player.ToString()}:") ;
+            Console.WriteLine($"Твой результат {_player.ToString()}") ;
         }
 
         private void StartRoomEncounter(DungeonRoom currentRoom, out bool success)
