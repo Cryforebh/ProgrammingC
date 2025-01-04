@@ -20,5 +20,9 @@ namespace GamePrototype.Items.EquipItems
             _durability += _durability + delta > _maxDurability 
             ? _maxDurability 
             : _durability + delta;
+        public void Repair()
+        {
+            Repair(7);
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Utils;
+using System.Dynamic;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GamePrototype.Units
 {
@@ -18,6 +20,10 @@ namespace GamePrototype.Units
             if (_equipment.TryGetValue(EquipSlot.Weapon, out var item) && item is Weapon weapon) 
             {
                 return BaseDamage + weapon.Damage;
+            }
+            else if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemrange) && itemrange is RangeWeapon rangeWeapon)
+            {
+                return BaseDamage + rangeWeapon.Damage;
             }
             return BaseDamage;
         }
@@ -54,21 +60,21 @@ namespace GamePrototype.Units
 
             if (economicItem is Grindstone grindstone)
             {
-                if (_equipment.TryGetValue(EquipSlot.Armour, out var itemWeapon) && itemWeapon is Weapon weapon)
+                if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemWeapon) && itemWeapon is Weapon weapon)
                 {
-                    weapon.Repair(7);
+                    weapon.Repair();
                 }
-                if (_equipment.TryGetValue(EquipSlot.Armour, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
+                if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
                 {
-                    rangeWeapon.Repair(7);
+                    rangeWeapon.Repair();
                 }
                 if (_equipment.TryGetValue(EquipSlot.Armour, out var itemArmour) && itemArmour is Armour armour)
                 {
-                    armour.Repair(7);
+                    armour.Repair();
                 }
                 if (_equipment.TryGetValue(EquipSlot.ArmourHelmet, out var itemHelmet) && itemHelmet is ArmourHelmet armourHelmet)
                 {
-                    itemHelmet.Repair(7);
+                    itemHelmet.Repair();
                 }
             }
         }
@@ -82,19 +88,28 @@ namespace GamePrototype.Units
                     damage -= (uint)(damage * ((armour.Defence + armourHelmet.Defence) / 100f));
                     armour.ReduceDurability(1); armourHelmet.ReduceDurability(1);
                 }
-                damage -= (uint)(damage * (armour.Defence / 100f));
-                armour.ReduceDurability(1);
+                else
+                {
+                    damage -= (uint)(damage * (armour.Defence / 100f));
+                    armour.ReduceDurability(1);
+                }
             }
-            if (_equipment.TryGetValue(EquipSlot.Armour, out var itemWeapon) && itemWeapon is Weapon weapon)
-            {
-                weapon.ReduceDurability(1);
-            }
-            if (_equipment.TryGetValue(EquipSlot.Armour, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
-            {
-                rangeWeapon.ReduceDurability(1);
-            }
+
             return damage;
         }
+
+        public override void CalculateDamageDurability(uint damageDurability)
+        {
+            if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemWeapon) && itemWeapon is Weapon weapon)
+            {
+                weapon.ReduceDurability(damageDurability);
+            }
+
+            if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
+            {
+                rangeWeapon.ReduceDurability(damageDurability);
+            }
+        } 
 
         public override string ToString()
         {

@@ -11,6 +11,7 @@ namespace GamePrototype.Game
         private Unit _player;
         private DungeonRoom _dungeon;
         private readonly CombatManager _combatManager = new CombatManager();
+        private UnitFactoryDemo unitFactoryDemo = new UnitFactoryDemo();
 
         public void StartGame() 
         {
@@ -26,7 +27,10 @@ namespace GamePrototype.Game
             Console.WriteLine("Добро пожаловать, игрок!");
             _dungeon = DungeonBuilder.BuildDungeon();
             Console.Write("Введи свое имя: ");
-            _player = UnitFactoryDemo.CreatePlayer(Console.ReadLine());
+            unitFactoryDemo.CreatePlayer(Console.ReadLine());
+            Console.Write("Выбери оружие (0 - Меч, 1 - Лук): ");
+            _player = unitFactoryDemo.CreateWeapon(Console.ReadLine());
+            //Console.WriteLine($"Проверка информации и инвентаря {_player.ToString()}");
         }
 
         private void StartGameLoop()
@@ -45,8 +49,9 @@ namespace GamePrototype.Game
                 while (true) 
                 {
                     if (Enum.TryParse<Direction>(Console.ReadLine(), out var direction) ) 
-                    {
+                    {  
                         currentRoom = currentRoom.Rooms[direction];
+                        Console.WriteLine($"\nТы входишь в {currentRoom.Name}...");
                         break;
                     }
                     else 
@@ -56,7 +61,7 @@ namespace GamePrototype.Game
                 }
             }
             Console.WriteLine($"\nТебе удалось дойти до конца, поздравляю!");
-            Console.WriteLine($"Твой результат {_player.ToString()}") ;
+            Console.WriteLine($"Твой результат:\n{_player.ToString()}") ;
         }
 
         private void StartRoomEncounter(DungeonRoom currentRoom, out bool success)

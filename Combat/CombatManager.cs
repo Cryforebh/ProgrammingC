@@ -2,6 +2,7 @@
 using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Units;
+using GamePrototype.Utils;
 
 namespace GamePrototype.Combat
 {
@@ -56,12 +57,15 @@ namespace GamePrototype.Combat
                 // player hit
                 case RockPaperScissors.Rock when enemyInput == RockPaperScissors.Scissors:
                     ApplyDamage(player, enemy);
+                    player.CalculateDamageDurability(player.DamageDurability);
                     break;
                 case RockPaperScissors.Scissors when enemyInput == RockPaperScissors.Paper:
                     ApplyDamage(player, enemy);
+                    player.CalculateDamageDurability(player.DamageDurability);
                     break;
                 case RockPaperScissors.Paper when enemyInput == RockPaperScissors.Rock:
                     ApplyDamage(player, enemy);
+                    player.CalculateDamageDurability(player.DamageDurability);
                     break;
                 // enemy hit
                 case RockPaperScissors.Scissors when enemyInput == RockPaperScissors.Rock:
@@ -89,12 +93,5 @@ namespace GamePrototype.Combat
             }
         }
 
-        
-
-        private void Repair(EquipItem grindstone, Player player)
-        {
-            grindstone.ReduceDurability( 1 );
-            Console.WriteLine($"{grindstone.Durability}");
-        }
     }
 }

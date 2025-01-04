@@ -4,7 +4,11 @@ namespace GamePrototype.Items.EquipItems
 {
     public sealed class Armour : EquipItem
     {
-        public Armour(uint defence, uint durability, string name) : base(durability, name) => Defence = defence;
+        public Armour(uint defence, uint durability, string name) : base(durability, name)
+        {
+            Defence = defence;
+            Durability = durability;
+        }
 
         public uint Defence { get; }
 
@@ -14,7 +18,11 @@ namespace GamePrototype.Items.EquipItems
 
     public sealed class ArmourHelmet : EquipItem
     {
-        public ArmourHelmet(uint defence, uint durability, string name) : base(durability, name) => Defence = defence;
+        public ArmourHelmet(uint defence, uint durability, string name) : base(durability, name)
+        {
+            Defence = defence;
+            Durability = durability;
+        }
 
         public uint Defence { get; }
 

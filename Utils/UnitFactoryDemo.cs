@@ -1,22 +1,37 @@
 ﻿using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Units;
+using System.Numerics;
 
 namespace GamePrototype.Utils
 {
     public class UnitFactoryDemo
     {
-        public static Unit CreatePlayer(string name)
+        private Unit Player { get; set; }
+        public void CreatePlayer(string name)
         {
-            var player = new Player(name, 30, 30, 6);
-            player.AddItemToInventory(new Weapon(10, 15, "Меч"));
+            var player = new Player(name, 30, 30, 3);
+            
             player.AddItemToInventory(new Armour(10, 15, "Броня"));
             player.AddItemToInventory(new ArmourHelmet(5, 15, "Шлем"));
-            player.AddItemToInventory(new HealthPotion("Зелье здоровья"));
-            player.AddItemToInventory(new Grindstone("Точильный камень"));
-            return player;
+
+            Player = player;
         }
 
-        public static Unit CreateGoblinEnemy() => new Goblin(GameConstants.Goblin, 18, 18, 2);
+        public Unit CreateWeapon(string name)
+        {
+            if (name == "0")
+            {
+                Player.AddItemToInventory(new Weapon(4, 15, "Меч"));
+            }
+            if (name == "1")
+            {
+                Player.AddItemToInventory(new RangeWeapon(6, 6, "Лук"));
+            }
+            return Player;
+        }
+
+        public static Unit CreateGoblinEnemy() => new Goblin(GameConstants.Goblin, 20, 25, 4);
+        public static Unit CreateGoblinEnemyTwo() => new Goblin(GameConstants.Goblin, 25, 35, 5);
     }
 }

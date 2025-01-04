@@ -6,5 +6,6 @@
         public static string HealthPotion = "Зелье здоровья";
         public static string Grindstone = "Камень для заточки";
         public static string Goblin = "Гоблин";
+        public static string GoblinBig = "Большой Гоблин";
     }
 }

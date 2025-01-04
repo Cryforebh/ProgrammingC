@@ -19,6 +19,9 @@ namespace GamePrototype.Units
 
         public uint MaxHealth => _maxHealth;
 
+        private uint _damageDurability = 1;
+        public uint DamageDurability => _damageDurability;
+
         protected Unit(string name, uint health, uint maxHealth, uint baseDamage) 
         {
             Name = name;
@@ -44,7 +47,9 @@ namespace GamePrototype.Units
         }
 
         protected abstract uint CalculateAppliedDamage(uint damage);
-        
+
+        public abstract void CalculateDamageDurability(uint damageDurability);
+
         protected virtual void DamageReceiveHandler() { }
         
         public abstract uint GetUnitDamage();

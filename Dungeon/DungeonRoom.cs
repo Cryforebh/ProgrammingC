@@ -19,6 +19,13 @@ namespace GamePrototype.Dungeon
             Enemy = enemy;
         }
 
+        public DungeonRoom(string name, Unit enemy, Item item)
+        {
+            Name = name;
+            Enemy = enemy;
+            Loot = item;
+        }
+
         public DungeonRoom(string name, Item item)
         {
             Name = name;
