@@ -1,17 +1,20 @@
-﻿using GamePrototype.Items.EconomicItems;
+﻿using GamePrototype.Game.Difficulty;
+using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Units;
 using System.Numerics;
+using System.Xml.Linq;
 
 namespace GamePrototype.Utils
 {
     public class UnitFactoryDemo
     {
         private Unit Player { get; set; }
+        private GameDifficulty _gameDifficulty;
         public void CreatePlayer(string name)
         {
             var player = new Player(name, 30, 30, 3);
-            
+
             player.AddItemToInventory(new Armour(10, 15, "Броня"));
             player.AddItemToInventory(new ArmourHelmet(5, 15, "Шлем"));
 
@@ -33,5 +36,19 @@ namespace GamePrototype.Utils
 
         public static Unit CreateGoblinEnemy() => new Goblin(GameConstants.Goblin, 20, 25, 4);
         public static Unit CreateGoblinEnemyTwo() => new Goblin(GameConstants.Goblin, 25, 35, 5);
+
+        public void Difficylty(string name)
+        {
+            if (name == "0")
+            {
+                _gameDifficulty = new EssyDifficultyGame();
+            }
+            else if (name == "1")
+            {
+                _gameDifficulty = new HardDifficultyGame();
+            }
+            Difficulty difficulty = _gameDifficulty.Create();
+        }
+
     }
 }

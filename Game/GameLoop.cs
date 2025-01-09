@@ -1,5 +1,6 @@
 ﻿using GamePrototype.Combat;
 using GamePrototype.Dungeon;
+using GamePrototype.Game.Difficulty;
 using GamePrototype.Items;
 using GamePrototype.Units;
 using GamePrototype.Utils;
@@ -12,6 +13,7 @@ namespace GamePrototype.Game
         private DungeonRoom _dungeon;
         private readonly CombatManager _combatManager = new CombatManager();
         private UnitFactoryDemo unitFactoryDemo = new UnitFactoryDemo();
+
 
         public void StartGame() 
         {
@@ -30,6 +32,8 @@ namespace GamePrototype.Game
             unitFactoryDemo.CreatePlayer(Console.ReadLine());
             Console.Write("Выбери оружие (0 - Меч, 1 - Лук): ");
             _player = unitFactoryDemo.CreateWeapon(Console.ReadLine());
+            Console.Write("Выбери уровень сложности (0 - Легко, 1 - Сложно): ");
+
             //Console.WriteLine($"Проверка информации и инвентаря {_player.ToString()}");
         }
 
