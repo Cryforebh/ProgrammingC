@@ -60,21 +60,9 @@ namespace GamePrototype.Units
 
             if (economicItem is Grindstone grindstone)
             {
-                if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemWeapon) && itemWeapon is Weapon weapon)
+                foreach (var equipment in _equipment.Values)
                 {
-                    weapon.Repair();
-                }
-                if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
-                {
-                    rangeWeapon.Repair();
-                }
-                if (_equipment.TryGetValue(EquipSlot.Armour, out var itemArmour) && itemArmour is Armour armour)
-                {
-                    armour.Repair();
-                }
-                if (_equipment.TryGetValue(EquipSlot.ArmourHelmet, out var itemHelmet) && itemHelmet is ArmourHelmet armourHelmet)
-                {
-                    itemHelmet.Repair();
+                    equipment.Repair(grindstone.GrindstoneRestore);
                 }
             }
         }

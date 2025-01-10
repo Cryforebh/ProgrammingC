@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GamePrototype.Combat.CombatManager" Collapsed="true">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABABAAAAAAACAAQEAAAAAACAAAAAAAAAE=</HashCode>
+      <FileName>Combat\CombatManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Units.Goblin" Collapsed="true">
+    <Position X="6.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Units\Goblin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Units.Inventory" Collapsed="true">
+    <Position X="26.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABCAAAAAAAAASAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Units.Player" Collapsed="true">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAARAAAAEAAAEAAAAAAAAAAAAQAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Units\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Units.Unit" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAQAAAEEKAAAAgAgAQQAAEAAAAICAAAAAgBAAgA=</HashCode>
+      <FileName>Units\Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Game.GameLoop" Collapsed="true">
+    <Position X="25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAQAAAAAAKAAkAAIAAAAAAIAAACAAAAA=</HashCode>
+      <FileName>Game\GameLoop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Utils.DungeonBuilder" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Utils\DungeonBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Utils.GameConstants" Collapsed="true">
+    <Position X="23.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAABAAAAAAAAAAAAIAAAAAACAAAAAAAE=</HashCode>
+      <FileName>Utils\GameConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Utils.UnitFactoryDemo" Collapsed="true">
+    <Position X="26.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAEAAAAAAAAAAAAAQAAAAAAQAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Utils\UnitFactoryDemo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Dungeon.DungeonRoom" Collapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAgCAAAAAAACAAAAAAAQCAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dungeon\DungeonRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EconomicItems.EconomicItem" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\EconomicItems\EconomicItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EconomicItems.Gold" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Items\EconomicItems\Gold.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EconomicItems.Grindstone" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Items\EconomicItems\Grindstone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EconomicItems.HealthPotion" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Items\EconomicItems\HealthPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EconomicItems.Item" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAASAAAAAAIAAAAAAACAAAAA=</HashCode>
+      <FileName>Items\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EquipItems.Armour" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgA=</HashCode>
+      <FileName>Items\EquipItems\Armour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EquipItems.ArmourHelmet" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgA=</HashCode>
+      <FileName>Items\EquipItems\Armour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EquipItems.EquipItem" Collapsed="true">
+    <Position X="17.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAQAACAAAAAAAAAAIDAAAgA=</HashCode>
+      <FileName>Items\EquipItems\EquipItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EquipItems.Weapon" Collapsed="true">
+    <Position X="18.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Items\EquipItems\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Items.EquipItems.RangeWeapon" Collapsed="true">
+    <Position X="20.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Items\EquipItems\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePrototype.Program" Collapsed="true">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="GamePrototype.Items.RockPaperScissorsName" Collapsed="true">
+    <Position X="25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\TranslationItems.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GamePrototype.Items.DirectionName" Collapsed="true">
+    <Position X="23.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\TranslationItems.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="GamePrototype.Combat.RockPaperScissors" Collapsed="true">
+    <Position X="26.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Combat\RockPaperScissors.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GamePrototype.Utils.EquipSlot" Collapsed="true">
+    <Position X="25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAgAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\EquipSlot.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GamePrototype.Dungeon.Direction" Collapsed="true">
+    <Position X="23.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Dungeon\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,9 +8,6 @@ using System.Threading.Tasks;
 
 namespace GamePrototype.Items
 {
-    internal class TranslationItems
-    {
-    }
 
     struct RockPaperScissorsName
     {
