@@ -1,4 +1,5 @@
-﻿using GamePrototype.Items.EconomicItems;
+﻿using GamePrototype.Game.Difficulty;
+using GamePrototype.Items.EconomicItems;
 
 namespace GamePrototype.Units
 {
@@ -9,7 +10,8 @@ namespace GamePrototype.Units
         private uint _maxHealth;
         protected uint BaseDamage;
         protected Inventory Inventory;
-        
+        protected Difficylty _difficylty { get; set; }
+
         public string Name { get; private set; }
         public uint Health
         {
@@ -22,8 +24,9 @@ namespace GamePrototype.Units
         private uint _damageDurability = 1;
         public uint DamageDurability => _damageDurability;
 
-        protected Unit(string name, uint health, uint maxHealth, uint baseDamage) 
+        protected Unit(string name, uint health, uint maxHealth, uint baseDamage)
         {
+
             Name = name;
             _health = health;
             _maxHealth = maxHealth;
@@ -34,15 +37,15 @@ namespace GamePrototype.Units
         public void ApplyDamage(uint damage)
         {
             var damageApplied = CalculateAppliedDamage(damage);
-            if (_health < damageApplied || (_health - damageApplied) <= 0) 
+            if (_health < damageApplied || (_health - damageApplied) <= 0)
             {
                 _health = 0;
             }
-            else 
+            else
             {
                 _health -= damageApplied;
             }
-            
+
             DamageReceiveHandler();
         }
 
@@ -51,14 +54,14 @@ namespace GamePrototype.Units
         public abstract void CalculateDamageDurability(uint damageDurability);
 
         protected virtual void DamageReceiveHandler() { }
-        
+
         public abstract uint GetUnitDamage();
 
         public abstract void HandleCombatComplete();
 
-        public virtual void AddItemToInventory(Item item) 
+        public virtual void AddItemToInventory(Item item)
         {
-            if (!Inventory.TryAdd(item)) 
+            if (!Inventory.TryAdd(item))
             {
                 Console.WriteLine($"В инветраре {Name} заполненно.");
             }
@@ -66,14 +69,30 @@ namespace GamePrototype.Units
 
         public void AddItemsFromUnitToInventory(Unit unit)
         {
-            for (int i = 0; i < unit.Inventory.Items.Count; i++) 
+            for (int i = 0; i < unit.Inventory.Items.Count; i++)
             {
-                if (!Inventory.TryAdd(unit.Inventory.Items[i])) 
+                if (!Inventory.TryAdd(unit.Inventory.Items[i]))
                 {
                     //inventory is full
                     return;
                 }
             }
+        }
+
+        public void DifficyltyPlayerAdd(Difficylty difficylty)
+        {
+            _health = _health / difficylty.difficyltyValue;
+            _maxHealth = _maxHealth / difficylty.difficyltyValue;
+            BaseDamage = BaseDamage / difficylty.difficyltyValue;
+            _difficylty = difficylty;
+        }
+
+        public void DifficyltyNPCAdd(Difficylty difficylty)
+        {
+            _health = _health + (_health / difficylty.difficyltyValue);
+            _maxHealth = _maxHealth + (_maxHealth / difficylty.difficyltyValue);
+            BaseDamage = BaseDamage + (BaseDamage / difficylty.difficyltyValue);
+            _difficylty = difficylty;
         }
     }
 }

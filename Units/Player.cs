@@ -1,4 +1,5 @@
-﻿using GamePrototype.Items.EconomicItems;
+﻿using GamePrototype.Game.Difficulty;
+using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Utils;
 using System.Dynamic;
@@ -12,7 +13,8 @@ namespace GamePrototype.Units
         private readonly Dictionary<EquipSlot, EquipItem> _equipment = new();
 
         public Player(string name, uint health, uint maxHealth, uint baseDamage) : base(name, health, maxHealth, baseDamage)
-        {            
+        {
+            health = health;
         }
 
         public override uint GetUnitDamage()

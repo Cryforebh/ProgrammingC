@@ -1,4 +1,5 @@
-﻿using GamePrototype.Items.EconomicItems;
+﻿using GamePrototype.Game.Difficulty;
+using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Units;
 using System.Numerics;
@@ -7,9 +8,15 @@ namespace GamePrototype.Utils
 {
     public class UnitFactoryDemo
     {
+        public UnitFactoryDemo()
+        {
+        }
+
+        public Difficylty Difficylty = new EasyDifficylty();
         private Unit Player { get; set; }
         public void CreatePlayer(string name)
         {
+            
             var player = new Player(name, 30, 30, 3);
             
             player.AddItemToInventory(new Armour(10, 15, "Броня"));
@@ -31,7 +38,11 @@ namespace GamePrototype.Utils
             return Player;
         }
 
-        public static Unit CreateGoblinEnemy() => new Goblin(GameConstants.Goblin, 20, 25, 4);
+        public static Unit CreateGoblinEnemy()
+        {
+            Unit unit = new Goblin(GameConstants.Goblin, 20, 25, 4);
+            return unit;
+        }
         public static Unit CreateGoblinEnemyTwo() => new Goblin(GameConstants.Goblin, 25, 35, 5);
     }
 }

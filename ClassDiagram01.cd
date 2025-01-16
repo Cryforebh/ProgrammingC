@@ -31,18 +31,18 @@
   <Class Name="GamePrototype.Units.Unit" Collapsed="true">
     <Position X="8" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAQAAAEEKAAAAgAgAQQAAEAAAAICAAAAAgBAAgA=</HashCode>
+      <HashCode>AAAACAQAAAEEKAAAAgAgAQQAAEAAAAICABAAAgBAAgA=</HashCode>
       <FileName>Units\Unit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GamePrototype.Game.GameLoop" Collapsed="true">
     <Position X="25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABAAAQAAAAAAKAAkAAIAAAAAAIAAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAABAAAQAAAAAAKAAkAAIAEAAAAIAAACAAAAA=</HashCode>
       <FileName>Game\GameLoop.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GamePrototype.Utils.DungeonBuilder" Collapsed="true">
+  <Class Name="GamePrototype.Utils.HardDungeonBuilder" Collapsed="true">
     <Position X="25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>

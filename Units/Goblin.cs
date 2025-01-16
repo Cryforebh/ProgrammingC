@@ -1,9 +1,14 @@
-﻿namespace GamePrototype.Units
+﻿using GamePrototype.Game.Difficulty;
+using GamePrototype.Items.EconomicItems;
+using GamePrototype.Utils;
+
+namespace GamePrototype.Units
 {
     public sealed class Goblin : Unit
     {
         public Goblin(string name, uint health, uint maxHealth, uint baseDamage) : base(name, health, maxHealth, baseDamage)
         {
+
         }
 
         public override uint GetUnitDamage() => BaseDamage;
@@ -13,5 +18,6 @@
         protected override uint CalculateAppliedDamage(uint damage) => damage;
 
         public override void CalculateDamageDurability(uint damageDurability) { }
+
     }
 }
