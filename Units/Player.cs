@@ -1,5 +1,6 @@
 ﻿using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
+using GamePrototype.Items.EquipItems.Weapons;
 using GamePrototype.Utils;
 using System.Text;
 

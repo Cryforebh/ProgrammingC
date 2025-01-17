@@ -12,7 +12,6 @@ namespace GamePrototype.Game
         private Unit _player;
         private DungeonRoom _dungeon;
         private readonly CombatManager _combatManager = new CombatManager();
-        private UnitFactoryDemo unitFactoryDemo;
         private InitializeDifficulty initializeDifficulty = new InitializeDifficulty();
 
         public void StartGame() 
@@ -28,14 +27,8 @@ namespace GamePrototype.Game
         {
             Console.WriteLine("Добро пожаловать, игрок!");
             initializeDifficulty.Initialize();
-            Console.Write("Введи свое имя: ");
-            unitFactoryDemo = new UnitFactoryDemo();
-            unitFactoryDemo.CreatePlayer(Console.ReadLine());
-            _dungeon = initializeDifficulty.BuildDungeon();
-            Console.Write("Выбери оружие (0 - Меч, 1 - Лук): ");
-            _player = unitFactoryDemo.CreateWeapon(Console.ReadLine());
-            _player.DifficyltyPlayerAdd(initializeDifficulty.Difficylty());
-            //Console.WriteLine($"Проверка информации и инвентаря {_player.ToString()}");
+            _player = initializeDifficulty.Player;
+            _dungeon = initializeDifficulty.Dungeon;
         }
 
         private void StartGameLoop()

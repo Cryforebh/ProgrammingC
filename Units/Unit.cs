@@ -1,6 +1,7 @@
 ﻿using GamePrototype.Game.Difficulty;
 using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
+using GamePrototype.Items.EquipItems.Weapons;
 
 namespace GamePrototype.Units
 {
@@ -11,7 +12,6 @@ namespace GamePrototype.Units
         private uint _maxHealth;
         protected uint BaseDamage;
         protected Inventory Inventory;
-        protected Difficylty _difficylty { get; set; }
 
         public string Name { get; private set; }
         public uint Health
@@ -81,22 +81,6 @@ namespace GamePrototype.Units
                     return;
                 }
             }
-        }
-
-        public void DifficyltyPlayerAdd(Difficylty difficylty)
-        {
-            _health = _health / difficylty.difficyltyValue;
-            _maxHealth = _maxHealth / difficylty.difficyltyValue;
-            BaseDamage = BaseDamage / difficylty.difficyltyValue;
-            _difficylty = difficylty;
-        }
-
-        public void DifficyltyNPCAdd(Difficylty difficylty)
-        {
-            _health = _health + (_health / difficylty.difficyltyValue);
-            _maxHealth = _maxHealth + (_maxHealth / difficylty.difficyltyValue);
-            BaseDamage = BaseDamage + (BaseDamage / difficylty.difficyltyValue);
-            _difficylty = difficylty;
         }
 
         public uint GetDamage(EquipItem equipItem)

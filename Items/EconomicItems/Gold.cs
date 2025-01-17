@@ -6,8 +6,9 @@ namespace GamePrototype.Items.EconomicItems
     {
         public override bool Stackable => true;
 
-        public Gold() : base(GameConstants.Gold)
-        {            
+        public Gold(uint amount) : base(GameConstants.Gold)
+        {
+            Amount = amount;
         }       
     }
 }

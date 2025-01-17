@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GamePrototype.Items.EquipItems
+namespace GamePrototype.Items.EquipItems.Weapons
 {
     public class RangeWeapon : EquipItem
     {

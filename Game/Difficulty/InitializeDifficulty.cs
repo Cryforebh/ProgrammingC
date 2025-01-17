@@ -1,4 +1,6 @@
 ﻿using GamePrototype.Dungeon;
+using GamePrototype.Game.Difficulty.DifficultyLevels;
+using GamePrototype.Units;
 using GamePrototype.Utils;
 using System;
 using System.Collections.Generic;
@@ -10,26 +12,40 @@ namespace GamePrototype.Game.Difficulty
 {
     public class InitializeDifficulty
     {
-        private Difficylty _difficylty;
-        private DungeonAbs _dungeonAbs;
+
+        private DifficyltyFactory _difficyltyFactory;
+        private DungeonRoom _dungeon;
+        private Unit _player;
         private uint _volue { get; set; }
         public void Initialize()
         {
-            Console.Write("Выбери сложность (0 - Легко, 1 - Тяжело):");
-            _volue = uint.Parse(Console.ReadLine());
-            if (_volue == 0)
+            Console.Write("Выбери сложность игры (0 - Легко, 1 - Средне, 2 - Тяжело): ");
+
+            switch (uint.Parse(Console.ReadLine()))
             {
-                _difficylty = new EasyDifficylty();
-                _dungeonAbs = _difficylty.Create();
+                case 0:
+                    _difficyltyFactory = new EasyLvlFactories();
+                    break;
+                case 1:
+                    _difficyltyFactory = new DefaultLvlFactories();
+                    break;
+                case 2:
+                    _difficyltyFactory = new HardLvlFactories();
+                    break;
+                default:
+                    Console.WriteLine("Данные указанны не корректно! Установленна средняя сложность.");
+                    _difficyltyFactory = new DefaultLvlFactories();
+                    break;
             }
-            else
-            {
-                _difficylty = new HardDifficylty();
-                _dungeonAbs = _difficylty.Create();
-            }
+
+            Console.Write("Введи свое имя: ");
+            _player = _difficyltyFactory.CreatePlayer(Console.ReadLine());
+            _player = _difficyltyFactory.CreateItems();
+            _dungeon = _difficyltyFactory.CreateDungeon();
         }
         
-        public DungeonRoom BuildDungeon() => _dungeonAbs.BuildDungeon();
-        public Difficylty Difficylty() => _difficylty;
+        public DungeonRoom Dungeon => _dungeon;
+        public DifficyltyFactory Difficylty => _difficyltyFactory;
+        public Unit Player => _player;
     }
 }
