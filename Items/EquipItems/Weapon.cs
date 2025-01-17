@@ -3,30 +3,24 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace GamePrototype.Items.EquipItems
 {
-    public sealed class Weapon : EquipItem
+    public class Weapon : EquipItem
     {
         public Weapon(uint damage, uint durability, string name) : base(durability, name)
         {
-            Damage = damage;
+            DamageBase = damage;
             Durability = durability;
         }
 
-        public uint Damage { get; }
-
+        protected uint DamageBase { get; set; }
+        public uint Damage => DamageBase;
         public override EquipSlot Slot => EquipSlot.Weapon;
-    }
 
-    public sealed class RangeWeapon : EquipItem
-    {
-        public RangeWeapon(uint damage, uint durability, string name) : base(durability, name)
-        {
-            Damage = damage;
-            Durability = durability;
-        }
-        
-        public uint Damage { get; }
-
-        public override EquipSlot Slot => EquipSlot.Weapon;
+        //protected uint LastDamage { get; set; }
+        //public uint SetLastDamage(uint lastDamage)
+        //{
+        //    LastDamage = lastDamage;
+        //    return lastDamage;
+        //}
     }
 
 }

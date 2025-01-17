@@ -17,16 +17,12 @@ namespace GamePrototype.Items
             {
                 case RockPaperScissors.Rock:
                     return "Камень";
-                    break;
                 case RockPaperScissors.Paper:
                     return "Бумага";
-                    break;
                 case RockPaperScissors.Scissors:
                     return "Ножницы";
-                    break;
                 default:
                     return "Ошибка перевода";
-                    break;
             }
 
         }
@@ -40,16 +36,12 @@ namespace GamePrototype.Items
             {
                 case Direction.Left:
                     return "Налево";
-                    break;
                 case Direction.Forward:
                     return "Прямо";
-                    break;
                 case Direction.Right:
                     return "Направо";
-                    break;
                 default:
                     return "Ошибка перевода";
-                    break;
             }
         }
     }

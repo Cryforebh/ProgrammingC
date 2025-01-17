@@ -8,28 +8,6 @@ using System.Threading.Tasks;
 
 namespace GamePrototype.Game.Difficulty
 {
-
-    //interface Idifficulty
-    //{
-    //    protected uint PlayerHealth { get; }
-    //    protected uint PlayerMaxHealth { get; }
-    //    protected uint PlayerBaseDamage { get; }
-
-    //    protected uint NPCHealth { get; }
-    //    protected uint NPCMaxHealth { get; }
-    //    protected uint NPCHealthDamage { get; }
-    //}
-
-    //public class DefaultDifficylty : Idifficulty
-    //{
-    //    public uint PlayerHealth => 25;
-    //    public uint PlayerMaxHealth => 30;
-    //    public uint PlayerBaseDamage => 3;
-
-    //    public uint NPCHealth => 20;
-    //    public uint NPCMaxHealth => 25;
-    //    public uint NPCHealthDamage => 4;
-    //}
     public abstract class Difficylty
     {
         protected string _name = "Стандартная сложность";

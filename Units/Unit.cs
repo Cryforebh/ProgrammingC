@@ -1,5 +1,6 @@
 ﻿using GamePrototype.Game.Difficulty;
 using GamePrototype.Items.EconomicItems;
+using GamePrototype.Items.EquipItems;
 
 namespace GamePrototype.Units
 {
@@ -24,6 +25,9 @@ namespace GamePrototype.Units
         private uint _damageDurability = 1;
         public uint DamageDurability => _damageDurability;
 
+        private uint _lastDamage { get; set; }
+        public uint LastDamage => _lastDamage;
+
         protected Unit(string name, uint health, uint maxHealth, uint baseDamage)
         {
 
@@ -36,7 +40,7 @@ namespace GamePrototype.Units
 
         public void ApplyDamage(uint damage)
         {
-            var damageApplied = CalculateAppliedDamage(damage);
+            var damageApplied = CalculateAppliedDamage(damage, _damageDurability);
             if (_health < damageApplied || (_health - damageApplied) <= 0)
             {
                 _health = 0;
@@ -49,9 +53,9 @@ namespace GamePrototype.Units
             DamageReceiveHandler();
         }
 
-        protected abstract uint CalculateAppliedDamage(uint damage);
+        protected abstract uint CalculateAppliedDamage(uint damage, uint damageDurability);
 
-        public abstract void CalculateDamageDurability(uint damageDurability);
+        public abstract uint CalculateDamageDurability(uint damageDurability);
 
         protected virtual void DamageReceiveHandler() { }
 
@@ -93,6 +97,27 @@ namespace GamePrototype.Units
             _maxHealth = _maxHealth + (_maxHealth / difficylty.difficyltyValue);
             BaseDamage = BaseDamage + (BaseDamage / difficylty.difficyltyValue);
             _difficylty = difficylty;
+        }
+
+        public uint GetDamage(EquipItem equipItem)
+        {
+            if (equipItem is Weapon weapon)
+            {
+                _lastDamage = weapon.Damage + BaseDamage;
+                return _lastDamage;
+            }
+            if (equipItem is RangeWeapon rangeWeapon)
+            {
+                _lastDamage = rangeWeapon.Damage + BaseDamage;
+                return _lastDamage;
+            }
+            _lastDamage = BaseDamage;
+            return BaseDamage;
+        }
+
+        public void InfoDamage()
+        {
+            Console.WriteLine($"Последний нанесенный урон - {LastDamage}");
         }
     }
 }

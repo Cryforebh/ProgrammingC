@@ -86,7 +86,7 @@ namespace GamePrototype.Combat
         private void ApplyDamage(Unit attacker, Unit defender)
         {
             defender.ApplyDamage(attacker.GetUnitDamage());
-            Console.WriteLine($"{attacker.Name} попадает! {defender.Name} получает урон и его здоровье теперь {defender.Health}/{defender.MaxHealth}");
+            Console.WriteLine($"{attacker.Name} попадает! {defender.Name} получает урон ({attacker.LastDamage}) и его здоровье теперь {defender.Health}/{defender.MaxHealth}");
             if (defender.Health == 0) 
             {
                 Console.WriteLine($"{defender.Name} мертв!");

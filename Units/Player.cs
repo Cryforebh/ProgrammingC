@@ -1,10 +1,7 @@
-﻿using GamePrototype.Game.Difficulty;
-using GamePrototype.Items.EconomicItems;
+﻿using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Utils;
-using System.Dynamic;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace GamePrototype.Units
 {
@@ -14,18 +11,15 @@ namespace GamePrototype.Units
 
         public Player(string name, uint health, uint maxHealth, uint baseDamage) : base(name, health, maxHealth, baseDamage)
         {
-            health = health;
+            Health = health;
         }
 
         public override uint GetUnitDamage()
         {
-            if (_equipment.TryGetValue(EquipSlot.Weapon, out var item) && item is Weapon weapon) 
+            foreach (var item in _equipment.Values)
             {
-                return BaseDamage + weapon.Damage;
-            }
-            else if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemrange) && itemrange is RangeWeapon rangeWeapon)
-            {
-                return BaseDamage + rangeWeapon.Damage;
+                if (item is Weapon weapon) return GetDamage(weapon);           
+                if (item is RangeWeapon rangeWeapon) return GetDamage(rangeWeapon) ;
             }
             return BaseDamage;
         }
@@ -33,9 +27,9 @@ namespace GamePrototype.Units
         public override void HandleCombatComplete()
         {
             var items = Inventory.Items;
-            for (int i = 0; i < items.Count; i++) 
+            for (int i = 0; i < items.Count; i++)
             {
-                if (items[i] is EconomicItem economicItem) 
+                if (items[i] is EconomicItem economicItem)
                 {
                     UseEconomicItem(economicItem);
                     Inventory.TryRemove(items[i]);
@@ -45,7 +39,7 @@ namespace GamePrototype.Units
 
         public override void AddItemToInventory(Item item)
         {
-            if (item is EquipItem equipItem && _equipment.TryAdd(equipItem.Slot, equipItem)) 
+            if (item is EquipItem equipItem && _equipment.TryAdd(equipItem.Slot, equipItem))
             {
                 // Item was equipped
                 return;
@@ -55,7 +49,7 @@ namespace GamePrototype.Units
 
         private void UseEconomicItem(EconomicItem economicItem)
         {
-            if (economicItem is HealthPotion healthPotion) 
+            if (economicItem is HealthPotion healthPotion)
             {
                 Health += healthPotion.HealthRestore;
             }
@@ -69,37 +63,25 @@ namespace GamePrototype.Units
             }
         }
 
-        protected override uint CalculateAppliedDamage(uint damage)
+        protected override uint CalculateAppliedDamage(uint damage, uint damageDurability)
         {
-            if (_equipment.TryGetValue(EquipSlot.Armour, out var item) && item is Armour armour) 
-            {
-                if (_equipment.TryGetValue(EquipSlot.ArmourHelmet, out var itemHelmet) && itemHelmet is ArmourHelmet armourHelmet)
-                {
-                    damage -= (uint)(damage * ((armour.Defence + armourHelmet.Defence) / 100f));
-                    armour.ReduceDurability(1); armourHelmet.ReduceDurability(1);
-                }
-                else
-                {
-                    damage -= (uint)(damage * (armour.Defence / 100f));
-                    armour.ReduceDurability(1);
-                }
-            }
+            damage -= (uint)damage * CalculateDamageDurability(damageDurability);
 
             return damage;
         }
 
-        public override void CalculateDamageDurability(uint damageDurability)
+        public override uint CalculateDamageDurability(uint damageDurability)
         {
-            if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemWeapon) && itemWeapon is Weapon weapon)
+            uint defence = 0;
+
+            foreach (var equipment in _equipment.Values)
             {
-                weapon.ReduceDurability(damageDurability);
+                defence += equipment.Durability;
+                equipment.ReduceDurability(damageDurability);
             }
 
-            if (_equipment.TryGetValue(EquipSlot.Weapon, out var itemRangeWeapon) && itemRangeWeapon is RangeWeapon rangeWeapon)
-            {
-                rangeWeapon.ReduceDurability(damageDurability);
-            }
-        } 
+            return defence / 100;
+        }
 
         public override string ToString()
         {
@@ -107,9 +89,9 @@ namespace GamePrototype.Units
             builder.AppendLine(Name);
             builder.AppendLine($"Здоровье {Health}/{MaxHealth}");
             builder.AppendLine("Добыча:");
-            
+
             var items = Inventory.Items;
-            for (int i = 0; i < items.Count; i++) 
+            for (int i = 0; i < items.Count; i++)
             {
                 builder.AppendLine($"[{items[i].Name}] : {items[i].Amount}");
             }

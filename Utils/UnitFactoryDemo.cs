@@ -29,20 +29,20 @@ namespace GamePrototype.Utils
         {
             if (name == "0")
             {
-                Player.AddItemToInventory(new Weapon(4, 15, "Меч"));
+                Player.AddItemToInventory(new Sword(4,15));
             }
             if (name == "1")
             {
-                Player.AddItemToInventory(new RangeWeapon(6, 6, "Лук"));
+                Player.AddItemToInventory(new Bow(7, 6));
             }
             return Player;
         }
 
         public static Unit CreateGoblinEnemy()
         {
-            Unit unit = new Goblin(GameConstants.Goblin, 20, 25, 4);
+            Unit unit = new Goblin(GameConstants.Goblin, 25, 25, 4);
             return unit;
         }
-        public static Unit CreateGoblinEnemyTwo() => new Goblin(GameConstants.Goblin, 25, 35, 5);
+        public static Unit CreateGoblinEnemyTwo() => new Goblin(GameConstants.Goblin, 35, 35, 5);
     }
 }

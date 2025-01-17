@@ -10,8 +10,8 @@ namespace GamePrototype.Game.Difficulty
 {
     public class InitializeDifficulty
     {
-        public Difficylty _difficylty;
-        public DungeonAbs dungeonAbs;
+        private Difficylty _difficylty;
+        private DungeonAbs _dungeonAbs;
         private uint _volue { get; set; }
         public void Initialize()
         {
@@ -20,16 +20,16 @@ namespace GamePrototype.Game.Difficulty
             if (_volue == 0)
             {
                 _difficylty = new EasyDifficylty();
-                dungeonAbs = _difficylty.Create();
+                _dungeonAbs = _difficylty.Create();
             }
             else
             {
                 _difficylty = new HardDifficylty();
-                dungeonAbs = _difficylty.Create();
+                _dungeonAbs = _difficylty.Create();
             }
         }
         
-        public DungeonRoom BuildDungeon() => dungeonAbs.BuildDungeon();
+        public DungeonRoom BuildDungeon() => _dungeonAbs.BuildDungeon();
         public Difficylty Difficylty() => _difficylty;
     }
 }

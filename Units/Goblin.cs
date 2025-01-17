@@ -15,9 +15,9 @@ namespace GamePrototype.Units
 
         public override void HandleCombatComplete() => Health = MaxHealth;
 
-        protected override uint CalculateAppliedDamage(uint damage) => damage;
+        protected override uint CalculateAppliedDamage(uint damage, uint damageDurability) => damage;
 
-        public override void CalculateDamageDurability(uint damageDurability) { }
+        public override uint CalculateDamageDurability(uint damageDurability) => damageDurability;
 
     }
 }
