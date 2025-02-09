@@ -1,6 +1,4 @@
-﻿using GamePrototype.Utils;
-
-namespace GamePrototype.Items.EquipItems.Armors
+﻿namespace GamePrototype.Items.EquipItems.Armors
 {
     public class IronHelmet : ArmourHelmet
     {

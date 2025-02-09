@@ -3,7 +3,6 @@ using GamePrototype.Dungeon;
 using GamePrototype.Game.Difficulty;
 using GamePrototype.Items;
 using GamePrototype.Units;
-using GamePrototype.Utils;
 
 namespace GamePrototype.Game
 {
@@ -14,7 +13,7 @@ namespace GamePrototype.Game
         private readonly CombatManager _combatManager = new CombatManager();
         private InitializeDifficulty initializeDifficulty = new InitializeDifficulty();
 
-        public void StartGame() 
+        public void StartGame()
         {
             Initialize();
             Console.WriteLine($"Настало время {_player.Name}. Ты входишь в подземелье...");
@@ -34,49 +33,49 @@ namespace GamePrototype.Game
         private void StartGameLoop()
         {
             var currentRoom = _dungeon;
-            
-            while (currentRoom.IsFinal == false) 
+
+            while (currentRoom.IsFinal == false)
             {
                 StartRoomEncounter(currentRoom, out var success);
-                if (!success) 
+                if (!success)
                 {
                     Console.WriteLine("Игра окончена!");
                     return;
                 }
                 DisplayRouteOptions(currentRoom);
-                while (true) 
+                while (true)
                 {
-                    if (Enum.TryParse<Direction>(Console.ReadLine(), out var direction) ) 
-                    {  
+                    if (Enum.TryParse<Direction>(Console.ReadLine(), out var direction))
+                    {
                         currentRoom = currentRoom.Rooms[direction];
                         Console.WriteLine($"\nТы входишь в {currentRoom.Name}...");
                         break;
                     }
-                    else 
+                    else
                     {
                         Console.WriteLine("Неверное направление!");
                     }
                 }
             }
             Console.WriteLine($"\nТебе удалось дойти до конца, поздравляю!");
-            Console.WriteLine($"Твой результат:\n{_player.ToString()}") ;
+            Console.WriteLine($"Твой результат:\n{_player.ToString()}");
         }
 
         private void StartRoomEncounter(DungeonRoom currentRoom, out bool success)
         {
             success = true;
-            if (currentRoom.Loot != null) 
+            if (currentRoom.Loot != null)
             {
                 _player.AddItemToInventory(currentRoom.Loot);
             }
-            if (currentRoom.Enemy != null) 
+            if (currentRoom.Enemy != null)
             {
                 if (_combatManager.StartCombat(_player, currentRoom.Enemy) == _player)
                 {
                     _player.HandleCombatComplete();
                     LootEnemy(currentRoom.Enemy);
                 }
-                else 
+                else
                 {
                     success = false;
                 }
@@ -94,11 +93,11 @@ namespace GamePrototype.Game
             Console.WriteLine("Какое направление из возможных выберешь?");
             foreach (var room in currentRoom.Rooms)
             {
-                Console.Write($"{directionName.Name(room.Key)} - {(int) room.Key}\t");
+                Console.Write($"{directionName.Name(room.Key)} - {(int)room.Key}\t");
             }
         }
 
-        
+
         #endregion
     }
 }

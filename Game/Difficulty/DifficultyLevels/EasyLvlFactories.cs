@@ -1,17 +1,11 @@
 ﻿using GamePrototype.Dungeon;
-using GamePrototype.Items.EquipItems.Armors;
 using GamePrototype.Units;
 using GamePrototype.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GamePrototype.Game.Difficulty.DifficultyLevels
 {
     public class EasyLvlFactories : DifficyltyFactory
-    { 
+    {
         public EasyLvlFactories()
         {
             NameDifficylty = "Легкий уровень сложности";

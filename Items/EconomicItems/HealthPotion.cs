@@ -9,6 +9,6 @@ namespace GamePrototype.Items.EconomicItems
 
         public HealthPotion() : base(GameConstants.HealthPotion)
         {
-        }      
+        }
     }
 }

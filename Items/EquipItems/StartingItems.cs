@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using GamePrototype.Items.EquipItems.Armors;
+﻿using GamePrototype.Items.EquipItems.Armors;
 using GamePrototype.Items.EquipItems.Weapons;
 using GamePrototype.Units;
 
@@ -13,7 +6,7 @@ namespace GamePrototype.Items.EquipItems
 {
     public class StartingItems
     {
-        public StartingItems() 
+        public StartingItems()
         {
         }
 

@@ -1,7 +1,6 @@
 ﻿using GamePrototype.Dungeon;
 using GamePrototype.Units;
 using GamePrototype.Utils;
-using static GamePrototype.Utils.HardDungeonBuilder;
 
 namespace GamePrototype.Game.Difficulty.DifficultyLevels
 {

@@ -19,8 +19,8 @@ namespace GamePrototype.Units
         {
             foreach (var item in _equipment.Values)
             {
-                if (item is Weapon weapon) return GetDamage(weapon);           
-                if (item is RangeWeapon rangeWeapon) return GetDamage(rangeWeapon) ;
+                if (item is Weapon weapon) return GetDamage(weapon);
+                if (item is RangeWeapon rangeWeapon) return GetDamage(rangeWeapon);
             }
             return BaseDamage;
         }

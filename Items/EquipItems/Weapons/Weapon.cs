@@ -1,5 +1,4 @@
 ﻿using GamePrototype.Utils;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace GamePrototype.Items.EquipItems.Weapons
 {

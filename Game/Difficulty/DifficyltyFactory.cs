@@ -1,9 +1,6 @@
-﻿using GamePrototype.Items.EquipItems.Weapons;
-using GamePrototype.Items.EquipItems.Armors;
-using GamePrototype.Units;
-using GamePrototype.Utils;
-using GamePrototype.Dungeon;
+﻿using GamePrototype.Dungeon;
 using GamePrototype.Items.EquipItems;
+using GamePrototype.Units;
 
 namespace GamePrototype.Game.Difficulty
 {

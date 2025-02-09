@@ -4,7 +4,7 @@ using GamePrototype.Units;
 namespace GamePrototype.Dungeon
 {
     public sealed class DungeonRoom
-    {      
+    {
         public readonly string Name;
         public readonly Unit Enemy;
         public readonly Item Loot;
@@ -32,7 +32,7 @@ namespace GamePrototype.Dungeon
             Loot = item;
         }
 
-        public bool TrySetDirection(Direction direction, DungeonRoom room) 
+        public bool TrySetDirection(Direction direction, DungeonRoom room)
         {
             if (Rooms.ContainsKey(direction))
             {

@@ -1,12 +1,6 @@
 ﻿using GamePrototype.Dungeon;
 using GamePrototype.Game.Difficulty.DifficultyLevels;
 using GamePrototype.Units;
-using GamePrototype.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GamePrototype.Game.Difficulty
 {
@@ -43,7 +37,7 @@ namespace GamePrototype.Game.Difficulty
             _player = _difficyltyFactory.CreateItems();
             _dungeon = _difficyltyFactory.CreateDungeon();
         }
-        
+
         public DungeonRoom Dungeon => _dungeon;
         public DifficyltyFactory Difficylty => _difficyltyFactory;
         public Unit Player => _player;

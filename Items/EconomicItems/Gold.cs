@@ -9,6 +9,6 @@ namespace GamePrototype.Items.EconomicItems
         public Gold(uint amount) : base(GameConstants.Gold)
         {
             Amount = amount;
-        }       
+        }
     }
 }

@@ -1,8 +1,4 @@
-﻿using GamePrototype.Game.Difficulty;
-using GamePrototype.Items.EconomicItems;
-using GamePrototype.Utils;
-
-namespace GamePrototype.Units
+﻿namespace GamePrototype.Units
 {
     public sealed class Goblin : Unit
     {

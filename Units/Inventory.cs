@@ -10,22 +10,22 @@ namespace GamePrototype.Units
 
         public Inventory(uint capacity) => _capacity = capacity;
 
-        public bool TryAdd(Item item) 
+        public bool TryAdd(Item item)
         {
-            if (_items.Count == _capacity) 
+            if (_items.Count == _capacity)
             {
                 return false;
             }
-            
+
             _items.Add(item);
             return true;
         }
 
 
 
-        public bool TryRemove(Item item) 
+        public bool TryRemove(Item item)
         {
-            if ( _items.Count == 0 || !_items.Contains(item)) 
+            if (_items.Count == 0 || !_items.Contains(item))
             {
                 return false;
             }

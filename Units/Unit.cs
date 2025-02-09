@@ -1,5 +1,4 @@
-﻿using GamePrototype.Game.Difficulty;
-using GamePrototype.Items.EconomicItems;
+﻿using GamePrototype.Items.EconomicItems;
 using GamePrototype.Items.EquipItems;
 using GamePrototype.Items.EquipItems.Weapons;
 

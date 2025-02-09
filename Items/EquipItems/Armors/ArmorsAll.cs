@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GamePrototype.Items.EquipItems.Armors
+﻿namespace GamePrototype.Items.EquipItems.Armors
 {
     public class IronArmor : Armour
     {
